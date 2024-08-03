@@ -2,13 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>Bootstrap Starter Template</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Hello World</h1>
+<div class="container">
+    <h1 style="text-align: center">Breast Cancer Prediction Model</h1>
+    <img alt="" src="../static/image_2.jpg" style="width: 100%; height: 400px;"/>
+    <form action="/predict" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="idFeatureInput" id="idFeatureLabel">Input Breast Cancer Features</label>
+            <input class="form-control" id="idFeatureInput" name="feature" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Predict</button>
+    </form>
+
+    {% for i in message %}
+    {% if i == "cancerous" %}
+    <div class="card" style="width: 18rem;">
+        <img alt="..." class="card-img-top" src="../static/image_1.jpg">
+        <div class="card-body">
+            <h5 class="card-title">Cancerous</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a class="btn btn-primary" href="#">Go somewhere</a>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="card" style="width: 18rem;">
+        <img alt="..." class="card-img-top" src="../static/image_3.jpg">
+        <div class="card-body">
+            <h5 class="card-title">Not Cancerous</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a class="btn btn-primary" href="#">Go somewhere</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
